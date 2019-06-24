@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+rbenv install
+gem install bundler -v 1.17.3
