@@ -2,5 +2,8 @@
 
 set -euo pipefail
 
-rbenv install
+if type -p rbenv >/dev/null; then
+  rbenv install
+fi
 gem install bundler -v 1.17.3
+bundle install
