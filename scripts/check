@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-for file in LICENSE*; do
+set -euo pipefail
+
+function checkLicence {
   echo
-  bundle exec licensee "$file"
-done
+  bundle exec licensee detect "$file"
+}
+
+if [[ $# -ne 0 ]]; then
+  for file in "$@"; do
+     checkLicence "$file"
+  done
+else
+  for file in licences//LIC*; do
+    checkLicence "$file"
+  done
+fi

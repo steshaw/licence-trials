@@ -16,8 +16,13 @@ with pkgs;
 
 mkShell {
   buildInputs = [
-    bundler
+    cacert
     cmake
+    openssl
+    pkgconfig
     ruby_2_5
   ];
+  shellHook = ''
+    export SSL_CERT_FILE=${cacert}/etc/ssl/certs/ca-bundle.crt
+  '';
 }
